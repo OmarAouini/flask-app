@@ -5,4 +5,4 @@ home_blueprint = Blueprint('home_blueprint', __name__)
 @home_blueprint.route('/home')
 #@login_required
 def home():
-    return render_template('home/home.html', nome="pippo")
+    return render_template('home/home.html')
