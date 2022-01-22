@@ -14,7 +14,7 @@ def login():
         # user check logic
         if form.user_name.data == 'admin' and form.password.data == 'admin':
             flash('login successful')
-            return redirect('home/home.html')
+            return redirect('home')
     return render_template('authentication/login.html', form=form)
 
 @authentication_blueprint.route('/signup')

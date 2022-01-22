@@ -12,6 +12,7 @@ app = Flask(__name__)
 # Setup Flask-SQLAlchemy
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['SECRET_KEY'] = "paolino"
 db.init_app(app)
 # Register blueprints
 app.register_blueprint(home_blueprint)
