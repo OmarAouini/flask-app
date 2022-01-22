@@ -1,4 +1,5 @@
-from flask import Blueprint, redirect, render_template, url_for
+from flask import Blueprint, flash, redirect, render_template, url_for
+from .forms import LoginForm
 
 authentication_blueprint = Blueprint('authentication_blueprint', __name__)
 
@@ -6,9 +7,15 @@ authentication_blueprint = Blueprint('authentication_blueprint', __name__)
 def route_default():
     return redirect(url_for('authentication_blueprint.login'))
 
-@authentication_blueprint.route('/login')
+@authentication_blueprint.route('/login', methods=['GET','POST'])
 def login():
-    return render_template('authentication/login.html')
+    form = LoginForm()
+    if form.validate_on_submit():
+        # user check logic
+        if form.user_name.data == 'admin' and form.password.data == 'admin':
+            flash('login successful')
+            return redirect('home/home.html')
+    return render_template('authentication/login.html', form=form)
 
 @authentication_blueprint.route('/signup')
 def signup():

@@ -7,6 +7,8 @@ from authentication.routes import authentication_blueprint
 db = SQLAlchemy()
 
 app = Flask(__name__)
+# # Setup Config
+# app.config.from_object(Config)
 # Setup Flask-SQLAlchemy
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
